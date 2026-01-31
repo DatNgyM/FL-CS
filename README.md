@@ -128,6 +128,58 @@ npm run build
 - TypeScript được bật mặc định
 - Tailwind CSS đã được cấu hình sẵn
 
+## CI/CD và Deployment
+
+### Deploy lên Vercel
+
+Dự án đã được cấu hình sẵn để deploy lên Vercel với CI/CD tự động.
+
+#### Bước 1: Kết nối GitHub với Vercel
+
+1. Truy cập [Vercel](https://vercel.com)
+2. Đăng nhập bằng tài khoản GitHub
+3. Click "Add New Project"
+4. Import repository này
+
+#### Bước 2: Cấu hình Project
+
+Vercel sẽ tự động phát hiện Next.js và cấu hình:
+- **Framework Preset**: Next.js
+- **Build Command**: `npm run build`
+- **Output Directory**: `.next`
+- **Install Command**: `npm install`
+
+#### Bước 3: Environment Variables (nếu cần)
+
+Trong Vercel Dashboard > Settings > Environment Variables, thêm:
+```
+NEXT_PUBLIC_APP_URL=https://your-domain.vercel.app
+```
+
+#### Bước 4: Deploy
+
+Click "Deploy" và đợi vài phút. Vercel sẽ:
+- Tự động build project
+- Deploy lên production
+- Tạo preview cho mỗi pull request
+- Auto-deploy khi push lên main branch
+
+### GitHub Actions CI
+
+Mỗi khi push code hoặc tạo pull request, GitHub Actions sẽ tự động:
+- Chạy build để kiểm tra lỗi
+- Verify dependencies
+- Đảm bảo code có thể build thành công
+
+### Preview Deployments
+
+Mỗi pull request sẽ tự động tạo một preview deployment URL để xem trước thay đổi.
+
+### Custom Domain (Optional)
+
+Sau khi deploy, bạn có thể thêm custom domain trong:
+Vercel Dashboard > Project > Settings > Domains
+
 ## License
 
 Private - Trung tâm Ngoại ngữ Hoàng Phúc
